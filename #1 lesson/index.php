@@ -38,3 +38,14 @@ function change ($volume, $value){
 $volume_stakan = change($volume_stakan, 200);
 print_r("\r\n");
 print_r('Конечный объем воды после пятого шага ' . $volume_stakan);
+print_r("\r\n");
+
+function logChange($value)
+{
+    print_r("Объем увеличился на " . $value . "\r\n");
+}
+
+$volume_stakan = change($volume_stakan, 200);
+logChange(200);
+
+
