@@ -35,16 +35,19 @@ Class Stakan {
 //        }
 //    }
     public function change($water_count){
-        if(!$this->check()){
-            $this->water_count+=$water_count;
+        if ($this->check_count){
+            return;
         }
+
+        $this->water_count+=$water_count;
+        $this->setCheckCount();
+
     }
 
-    public function check(){
+    public function setCheckCount(){
         if ($this->water_count >= $this->volume_stakan){
-            return $this->check_count = true;
+            $this->check_count = true;
         }
-        return $this->check_count;
     }
 
 }
