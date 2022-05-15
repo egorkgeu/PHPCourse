@@ -13,7 +13,15 @@ $logger = new Logger();
 //$logger->info('', $stakan->getVolume());
 $stakan->change(300);
 
-$waterRepository = new WaterRepository(1000);
-$waterCount = $waterRepository->give(1200);
-$logger->info('Количество воды', $waterCount);
+//$waterRepository = new WaterRepository(1000);
+//$waterCount = $waterRepository->give(1200);
+//$logger->info('Количество воды', $waterCount);
+$sourceWater = new SourceWater(1000);
+$waterRepository = new WaterRepository($sourceWater);
 
+
+$logger->info('Количество воды в хранилище', $waterRepository->take(300));
+
+$stakan->change($waterRepository->take(300));
+$logger->info('Количество воды в стакане', $stakan->getWaterCount());
+$logger->info('Количество воды в источнике', $sourceWater->getCount());
